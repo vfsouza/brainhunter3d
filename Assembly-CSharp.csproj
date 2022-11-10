@@ -59,13 +59,13 @@
     <Compile Include="Assets\Scripts\Map\MapBuilder\MapBuilder.cs" />
     <Compile Include="Assets\Scripts\Scene\SceneChanger.cs" />
     <Compile Include="Assets\Scripts\Player\Interaction\PlayerInteraction.cs" />
+    <Compile Include="Assets\Scripts\Horde\Controller\HordeController.cs" />
+    <Compile Include="Assets\Scripts\Player\Interaction\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\Player\Movement\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\Movement\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Player\Movement\PlayerSpawn.cs" />
-    <Compile Include="Assets\Scripts\Player\Movement\PlayerControl.cs" />
-    <Compile Include="Assets\Scripts\Horde\Controller\HordeController.cs" />
-    <Compile Include="Assets\Scripts\Player\Interaction\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\Player\Interaction\ProjectileMovement.cs" />
+    <Compile Include="Assets\Scripts\Player\Movement\PlayerControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

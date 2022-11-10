@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
 		GameObject projectileObj = Instantiate(projectile, new Vector3(transform.position.x, 1, transform.position.z), Quaternion.identity);
 
 		projectileObj.transform.Rotate(Vector3.up * transform.rotation.eulerAngles.y, Space.World);
-        yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.5f);
 		allowFire = true;
 	}
 
