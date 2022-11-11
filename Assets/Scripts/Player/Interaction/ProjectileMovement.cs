@@ -15,7 +15,7 @@ public class ProjectileMovement : MonoBehaviour {
 
     void Update()
     {
-		Vector3 movement = transform.forward * 20; ;
+		Vector3 movement = transform.forward * 20;
 		_controller.Move(movement * Time.deltaTime);
 		Invoke("DestroyProjectile", 2);
 	}

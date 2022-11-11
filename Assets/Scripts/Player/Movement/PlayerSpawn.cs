@@ -13,7 +13,7 @@ public class PlayerSpawn : MonoBehaviour
     private void Start() {
         int column = mapBuilder.width / 2;
 		int line = mapBuilder.height / 2;
-        GameObject obj = Instantiate(spawnPrefab, new Vector3(column * 5, 0.2f, line * 5), Quaternion.identity);
+        GameObject obj = Instantiate(spawnPrefab, new Vector3(column * 5, 0, line * 5), Quaternion.identity);
         cameraMovement.zombie = obj.transform;
 	}
 }

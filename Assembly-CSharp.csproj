@@ -66,6 +66,8 @@
     <Compile Include="Assets\Scripts\Player\Movement\PlayerSpawn.cs" />
     <Compile Include="Assets\Scripts\Player\Interaction\ProjectileMovement.cs" />
     <Compile Include="Assets\Scripts\Player\Movement\PlayerControl.cs" />
+    <Compile Include="Assets\Scripts\Enemies\EnemyMovement.cs" />
+    <Compile Include="Assets\Scripts\Menu\Switch.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

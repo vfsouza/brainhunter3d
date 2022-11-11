@@ -10,8 +10,6 @@ public class PlayerMovement : MonoBehaviour
 	private int _isWalkingHash;
 
 	[Range(1, 20)]
-	public float jumpForce;
-	[Range(1, 20)]
 	public float movementSpeed;
 	[Range(1, 10)]
 	public float rotationSpeed;

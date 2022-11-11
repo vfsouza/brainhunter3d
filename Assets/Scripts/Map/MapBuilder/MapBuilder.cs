@@ -1,10 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.TerrainUtils;
 
-public class MapBuilder : MonoBehaviour
-{
+public class MapBuilder : MonoBehaviour {
 	private int[,] terrainMap;
 	private Vector3[,] mapPosition;
 
@@ -12,6 +11,7 @@ public class MapBuilder : MonoBehaviour
 	public GameObject mountainTile;
 	public GameObject spawnObj;
 	public GameObject chestObj;
+	public GameObject roadTile;
 
 	[Range(10, 50)]
 	public int width;
@@ -47,7 +47,7 @@ public class MapBuilder : MonoBehaviour
 		}
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
-				terrainMap[x, y] = Random.Range(1, 101) < iniChance ? 1 : 0;
+				terrainMap[x, y] = UnityEngine.Random.Range(1, 101) < iniChance ? 1 : 0;
 			}
 		}
 	}
@@ -55,16 +55,17 @@ public class MapBuilder : MonoBehaviour
 	public void genChests() {
 		int i = 0;
 		do {
-			int column = Random.Range(2, width - 1);
-			int line = Random.Range(2, height - 1);
+			int column = UnityEngine.Random.Range(2, width - 1);
+			int line = UnityEngine.Random.Range(2, height - 1);
 
 			Debug.Log("Chest: " + column + ":" + line);
 
 			if (terrainMap[column, line] != 0) {
 				terrainMap[column, line] = 2;
+				chestPosition.Add(new int[] { column, line });
 				i++;
 			}
-		} while (i < 3);
+		} while (i < maxChests);
 	}
 
 	public int[,] genTilePos(int[,] oldMap) {
@@ -105,7 +106,6 @@ public class MapBuilder : MonoBehaviour
 	}
 
 	public void buildMap() {
-
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < height; j++) {
 				if (terrainMap[i, j] == 0) {
@@ -115,6 +115,8 @@ public class MapBuilder : MonoBehaviour
 				} else if (terrainMap[i, j] == 2) {
 					Instantiate(chestObj, new Vector3(mapPosition[i, j].x, 0.4f, mapPosition[i, j].z), Quaternion.identity);
 					Instantiate(grassTile, mapPosition[i, j], Quaternion.identity);
+				} else if (terrainMap[i, j] == 3) {
+					Instantiate(roadTile, mapPosition[i, j], Quaternion.identity);
 				}
 
 				if ((i == 0 && j == 0) || (i == width - 1 && j == height - 1) || (i == 0 && j == height - 1) || (i == width - 1 && j == 0)) {
@@ -126,16 +128,36 @@ public class MapBuilder : MonoBehaviour
 	}
 
 	// Start is called before the first frame update
-	void Start()
-    {
+	void Start() {
 		doSim(numR);
 		genChests();
+		Vinibala();
 		buildMap();
-    }
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
+	// Update is called once per frame
+	void Update() {
+
+	}
+
+	private List<int[]> chestPosition = new List<int[]>();
+
+	private void Vinibala() {
+		
+		for (int j = 1; j < 3; j++) {
+			int[] initialPosition = chestPosition[0];
+			int[] finalPosition = chestPosition[j];
+			for (int i = initialPosition[0] < finalPosition[0] ? initialPosition[0] : finalPosition[0]; i < (initialPosition[0] > finalPosition[0] ? initialPosition[0] : finalPosition[0]); i++) {
+				if (terrainMap[i, initialPosition[1]] != 2) {
+					terrainMap[i, initialPosition[1]] = 3;
+				}
+			}
+
+			for (int i = initialPosition[1] < finalPosition[1] ? initialPosition[1] : finalPosition[1]; i < (initialPosition[1] > finalPosition[1] ? initialPosition[1] : finalPosition[1]); i++) {
+				if (terrainMap[finalPosition[0], i] != 2) {
+					terrainMap[finalPosition[0], i] = 3;
+				}
+			}
+		}
+	}
+} 

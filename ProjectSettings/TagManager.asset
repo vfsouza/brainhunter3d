@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Chest
   - Collider
+  - Spawn
+  - Enemy
+  - Projectile
   layers:
   - Default
   - TransparentFX
