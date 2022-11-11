@@ -33,8 +33,15 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Projectile")) {
-            Destroy(gameObject);
+            health--;
             Destroy(other.gameObject);
+            Dead();
         }
+    }
+
+    private void Dead() {
+        if (health == 0) {
+			Destroy(gameObject);
+		}
     }
 }

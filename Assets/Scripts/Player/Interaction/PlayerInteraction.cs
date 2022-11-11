@@ -6,14 +6,14 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     private Queue<GameObject> chests = new Queue<GameObject>();
-    private int health = 3;
+    public int health = 3;
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Chest")) {
             other.GetComponent<MeshRenderer>().enabled = false;
             other.GetComponent<BoxCollider>().enabled = false;
             chests.Enqueue(other.gameObject);
-            Invoke("Respawn", 5);
+            Invoke("Respawn", 10);
         } else if (other.CompareTag("Enemy")) {
             Destroy(other.gameObject);
             health--;

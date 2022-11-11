@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     private bool allowFire = true;
-    private float accuracy;
-    private float fireSpeed = 0.5f;
 
+    public float accuracy;
+    public float fireSpeed = 0.5f;
     public GameObject projectile;
     public PlayerMovement playerMovement;
 

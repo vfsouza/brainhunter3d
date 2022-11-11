@@ -2001,9 +2001,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4198c2e5773e2408faada5b7dc806a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  accuracy: 0
+  fireSpeed: 0.5
   projectile: {fileID: 2798139419955760258, guid: 6251d12fa60829c46aac3a523ec793cc, type: 3}
   playerMovement: {fileID: -6478939119719697927}
-  fireSpeed: 2
 --- !u!114 &2382304434306400100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2045,6 +2046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a578b58aa0fcd244ad6d8e494b923a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 3
 --- !u!95 &6390934692125535066
 Animator:
   serializedVersion: 4

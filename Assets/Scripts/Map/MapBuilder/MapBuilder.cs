@@ -131,7 +131,7 @@ public class MapBuilder : MonoBehaviour {
 	void Start() {
 		doSim(numR);
 		genChests();
-		Vinibala();
+		Dijkstra();
 		buildMap();
 	}
 
@@ -142,7 +142,7 @@ public class MapBuilder : MonoBehaviour {
 
 	private List<int[]> chestPosition = new List<int[]>();
 
-	private void Vinibala() {
+	private void Dijkstra() {
 		
 		for (int j = 1; j < 3; j++) {
 			int[] initialPosition = chestPosition[0];
