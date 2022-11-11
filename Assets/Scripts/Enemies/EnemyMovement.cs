@@ -6,7 +6,10 @@ public class EnemyMovement : MonoBehaviour
 {
     private GameObject _player;
     private CharacterController _ch;
+
     public float enemyMovement;
+    public int health;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +27,14 @@ public class EnemyMovement : MonoBehaviour
     private void Movement() {
 		Vector3 movement = transform.forward * enemyMovement;
         _ch.Move(movement * Time.deltaTime);
-    }
+        Vector3 gravity = transform.up * -1f;
+		_ch.Move(gravity * Time.deltaTime);
+	}
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Projectile"))
-        Destroy(gameObject);
+        if (other.CompareTag("Projectile")) {
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+        }
     }
 }

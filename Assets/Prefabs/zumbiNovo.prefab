@@ -2002,6 +2002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 2798139419955760258, guid: 6251d12fa60829c46aac3a523ec793cc, type: 3}
+  playerMovement: {fileID: -6478939119719697927}
   fireSpeed: 2
 --- !u!114 &2382304434306400100
 MonoBehaviour:
@@ -2029,7 +2030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd988121a48a74e4683d0bebfb1eb72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 20
+  movementSpeed: 8
   rotationSpeed: 5
   gravity: -10
 --- !u!114 &-1300191865493465264

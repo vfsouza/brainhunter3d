@@ -5,17 +5,26 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    private GameObject chest;
+    private Queue<GameObject> chests = new Queue<GameObject>();
+    private int health = 3;
+
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Chest")) {
             other.GetComponent<MeshRenderer>().enabled = false;
             other.GetComponent<BoxCollider>().enabled = false;
-            chest = other.gameObject;
-            Invoke("Respawn", 4);
+            chests.Enqueue(other.gameObject);
+            Invoke("Respawn", 5);
+        } else if (other.CompareTag("Enemy")) {
+            Destroy(other.gameObject);
+            health--;
+            if (health == 0) {
+                Destroy(gameObject);
+            }
         }
     }
 
     private void Respawn() {
+        GameObject chest = chests.Dequeue();
 		chest.GetComponent<MeshRenderer>().enabled = true;
 		chest.GetComponent<BoxCollider>().enabled = true;
 	}
